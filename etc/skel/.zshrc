@@ -271,7 +271,7 @@ alias nconfgrub="sudo nano /boot/grub/grub.cfg"
 alias nmkinitcpio="sudo nano /etc/mkinitcpio.conf"
 alias nmirrorlist="sudo nano /etc/pacman.d/mirrorlist"
 alias nsddm="sudo nano /etc/sddm.conf"
-alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
+alias bls="betterlockscreen -u /usr/share/backgrounds/noobie/"
 
 #gpg
 #verify signature for isos
