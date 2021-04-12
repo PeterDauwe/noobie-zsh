@@ -19,10 +19,7 @@ ZSH_THEME="Lastbobo"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# ZSH_THEME_RANDOM_IGNORED=(pygmalion tjkirch_mod)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -99,11 +96,16 @@ source $ZSH/oh-my-zsh.sh
 
 
 ####   ARCOLINUX SETTINGS   ####
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
+## Load zsh-syntax-highlighting; should be last.
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
 
 setopt GLOB_DOTS
 
@@ -111,6 +113,14 @@ setopt GLOB_DOTS
 [[ $- != *i* ]] && return
 
 export HISTCONTROL=ignoreboth:erasedups
+
+
+
+# Make nano the default editor
+
+export EDITOR='nano'
+export VISUAL='nano'
+
 
 #PS1='[\u@\h \W]\$ '
 
@@ -266,14 +276,16 @@ alias jctl="journalctl -p 3 -xb"
 
 #nano for important configuration files
 #know what you do in these files
-alias nlightdm="sudo nano /etc/lightdm/lightdm.conf"
-alias npacman="sudo nano /etc/pacman.conf"
-alias ngrub="sudo nano /etc/default/grub"
-alias nconfgrub="sudo nano /boot/grub/grub.cfg"
-alias nmkinitcpio="sudo nano /etc/mkinitcpio.conf"
-alias nmirrorlist="sudo nano /etc/pacman.d/mirrorlist"
-alias nsddm="sudo nano /etc/sddm.conf"
-alias bls="betterlockscreen -u /usr/share/backgrounds/noobie/"
+alias nlightdm="sudo $EDITOR /etc/lightdm/lightdm.conf"
+alias npacman="sudo $EDITOR /etc/pacman.conf"
+alias ngrub="sudo $EDITOR /etc/default/grub"
+alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
+alias nmkinitcpio="sudo $EDITOR /etc/mkinitcpio.conf"
+alias nmirrorlist="sudo $EDITOR /etc/pacman.d/mirrorlist"
+alias nsddm="sudo $EDITOR /etc/sddm.conf"
+alias nfstab="sudo $EDITOR /etc/fstab"
+alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
+alias nsamba="sudo $EDITOR /etc/samba/smb.conf"
 
 #gpg
 #verify signature for isos
@@ -328,3 +340,4 @@ ex ()
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
 sfetch
+
