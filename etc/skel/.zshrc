@@ -287,6 +287,24 @@ alias nfstab="sudo $EDITOR /etc/fstab"
 alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
 alias nsamba="sudo $EDITOR /etc/samba/smb.conf"
 
+#git clone
+alias gc="git clone"
+
+
+gitpush() {
+    git pull
+    git add -u
+    git add --all .
+    input="update"
+    git commit -m "$input"
+    git push --force -u origin master
+}
+alias gp=gitpush
+
+
+#No messages in virtualbox
+alias vbmessage='VBoxManage setextradata global GUI/SuppressMessages "all"'
+
 #gpg
 #verify signature for isos
 alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
@@ -326,7 +344,7 @@ ex ()
       *.7z)        7z x $1      ;;
       *.deb)       ar x $1      ;;
       *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;
+      *.tar.zst)   tar xf $1    ;;
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
